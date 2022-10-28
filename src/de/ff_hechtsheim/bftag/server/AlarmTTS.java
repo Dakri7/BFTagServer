@@ -21,6 +21,7 @@ public class AlarmTTS {
 	}
 	
 	public void speak(AlarmObject ao) {
+		gong();
 		try {
 			writer.write(ao.toTTSString());
 			writer.newLine();
@@ -30,5 +31,20 @@ public class AlarmTTS {
 			e.getStackTrace();
 		}
 		
+	}
+	
+	private void gong() {
+		ProcessBuilder pb = new ProcessBuilder("wsl",  "ssh",  "192.168.178.175",  "-i",  "~/.ssh/id_pc",  "vlc", "--qt-start-minimized", "/home/daniel/Music/gong.wav", "vlc://quit");
+		pb.redirectOutput(ProcessBuilder.Redirect.INHERIT);
+		pb.redirectError(ProcessBuilder.Redirect.INHERIT);
+		try {
+			Process p = pb.start();
+			p.waitFor();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			Thread.currentThread().interrupt();
+		}
+
 	}
 }
