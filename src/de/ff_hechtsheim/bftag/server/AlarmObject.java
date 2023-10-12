@@ -3,9 +3,9 @@ package de.ff_hechtsheim.bftag.server;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import org.springframework.stereotype.Repository;
 
-@XmlRootElement(name = "alarm")
+@Repository
 public class AlarmObject {
 	private String keyword;
 	private String shortKeyword;
@@ -64,7 +64,7 @@ public class AlarmObject {
 		back.append(keyword).append(". ");
 		back.append(street).append(". ");
 		
-		back.append("Es rücken aus: ");
+		back.append("Es rï¿½cken aus: ");
 		for(Entry<String, String> e: vehiclesWithGroups.entrySet()) {
 			back.append(e.getValue()).append(" mit dem ").append(e.getKey()).append(", ");
 		}
