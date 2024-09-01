@@ -7,10 +7,22 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class AlarmObject {
+	private String category;
 	private String keyword;
-	private String shortKeyword;
+	private String concreteKeyword;
 	private String street;
+	private String houseNumber;
 	private Map<String, String> vehiclesWithGroups;
+	private String reportant;
+	private String additionalInfo;
+	
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
 
 	public String getKeyword() {
 		return keyword;
@@ -20,12 +32,12 @@ public class AlarmObject {
 		this.keyword = keyword;
 	}
 
-	public String getShortKeyword() {
-		return shortKeyword;
+	public String getConcreteKeyword() {
+		return concreteKeyword;
 	}
 
-	public void setShortKeyword(String shortKeyword) {
-		this.shortKeyword = shortKeyword;
+	public void setConcreteKeyword(String concreteKeyword) {
+		this.concreteKeyword = concreteKeyword;
 	}
 
 	public String getStreet() {
@@ -36,14 +48,38 @@ public class AlarmObject {
 		this.street = street;
 	}
 
-	public Map<String, String> getGroupsOnVehicles() {
+	public String getHouseNumber() {
+		return houseNumber;
+	}
+
+	public void setHouseNumber(String houseNumber) {
+		this.houseNumber = houseNumber;
+	}
+
+	public Map<String, String> getVehiclesWithGroups() {
 		return vehiclesWithGroups;
 	}
 
-	public void setGroupsOnVehicles(Map<String, String> vehiclesWithGroups) {
+	public void setVehiclesWithGroups(Map<String, String> vehiclesWithGroups) {
 		this.vehiclesWithGroups = vehiclesWithGroups;
 	}
-	
+
+	public String getReportant() {
+		return reportant;
+	}
+
+	public void setReportant(String reportant) {
+		this.reportant = reportant;
+	}
+
+	public String getAdditionalInfo() {
+		return additionalInfo;
+	}
+
+	public void setAdditionalInfo(String additionalInfo) {
+		this.additionalInfo = additionalInfo;
+	}
+
 	public String toDisplayString() {
 		StringBuilder back = new StringBuilder();
 		
@@ -64,7 +100,7 @@ public class AlarmObject {
 		back.append(keyword).append(". ");
 		back.append(street).append(". ");
 		
-		back.append("Es r�cken aus: ");
+		back.append("Es rücken aus: ");
 		for(Entry<String, String> e: vehiclesWithGroups.entrySet()) {
 			back.append(e.getValue()).append(" mit dem ").append(e.getKey()).append(", ");
 		}

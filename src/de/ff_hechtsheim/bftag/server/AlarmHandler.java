@@ -12,7 +12,7 @@ public class AlarmHandler {
 	
 	
 	public void alarmReceived(AlarmObject ao) {
-		final AlarmWindow window = new AlarmWindow(ao.toDisplayString(), ao.getShortKeyword(), 10);
+		final AlarmWindow window = new AlarmWindow(ao.toDisplayString(), ao.getKeyword(), 10);
 		window.setVisible(true);
 		
 		new Thread() {
@@ -37,6 +37,6 @@ public class AlarmHandler {
 			e.printStackTrace();
 		}
 		
-		alarmTTS.speak(ao);
+		alarmTTS.alarm(ao);
 	}
 }
