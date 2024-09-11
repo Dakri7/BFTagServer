@@ -1,0 +1,13 @@
+U1.1 lose Objekte ohne Dringlichkeit
+U1.2 abgebrochener Ast ohne Dringlichkeit
+U1.3 Wasser in Gebäude klein
+U1.4 umgestürzter Baum ohne Dringlichkeit
+U2.1 übergetretener Bach
+U2.2 Wasser in Gebäude
+U2.3 lose Objekte mit Dringlichkeit
+U2.4 abgebrochener Ast mit Dringlichkeit
+U2.5 Wasser in Gebäude
+U2.6 überflutete Fahrbahn
+U2.7 umgestürzter Baum mit Dringlichkeit
+U2.8 abgedecktes Dach
+U3.1 Hangrutsch

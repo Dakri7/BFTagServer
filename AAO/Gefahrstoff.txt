@@ -1,0 +1,17 @@
+G1.1 Grundstufe
+G1.2 Ölspur
+G1.3 ausl. Betriebssoffe PKW < 50l
+G1.4 sonstige Kleinmengen < 10l
+G1.5 AEP GSG 1
+G2.1 Grundstufe
+G2.2 ausl. Betriebsstoffe LKW > 50l
+G2.3 AEP GSG 2
+G2.4 Gasgeruch
+G2.5 Gefahrstoffaustritt G2
+G2.6 Gasausströmung G2
+G3.1 Grundstufe
+G3.2 AEP GSG 3
+G3.3 Gefahrstoffaustritt
+G3.4 Gasausströmung
+G4.1 Grundstufe
+G4.2 AEP GSG 4
