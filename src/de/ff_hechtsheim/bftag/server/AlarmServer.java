@@ -28,6 +28,7 @@ public class AlarmServer {
 	}
 	
 	public static void main(String[] args) throws IOException{
-		SpringApplication.run(AlarmServer.class, args);
+		SpringApplicationBuilder builder = new SpringApplicationBuilder(AlarmServer.class);
+		builder.headless(false).run(args);
 	}
 }
