@@ -49,7 +49,7 @@ public class AlarmTTS {
 	}
 	
 	private void gong() {
-		ProcessBuilder pb = new ProcessBuilder("vlc", "--qt-start-minimized", "/home/daniel/Music/gong.wav", "vlc://quit");
+		ProcessBuilder pb = new ProcessBuilder("aplay gong.wav");
 		pb.redirectOutput(ProcessBuilder.Redirect.INHERIT);
 		pb.redirectError(ProcessBuilder.Redirect.INHERIT);
 		try {
