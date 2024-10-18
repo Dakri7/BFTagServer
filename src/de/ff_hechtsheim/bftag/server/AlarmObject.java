@@ -102,7 +102,7 @@ public class AlarmObject {
 		}
 		back.append(street);
 		if (houseNumber != null && !"".equals(houseNumber)) {
-			back.append(houseNumber).append("\n");
+			back.append(" ").append(houseNumber);
 		}
 		back.append("\n");
 		if (additionalInfo != null && !"".equals(additionalInfo)) {
@@ -127,7 +127,10 @@ public class AlarmObject {
 		} else {
 			back.append(keyword).append(". ");
 		}
-		back.append(street).append(". ");
+		back.append(street);
+		if (houseNumber != null && !"".equals(houseNumber)) {
+			back.append(" ").append(houseNumber);
+		}
 		back.append(additionalInfo).append(". ");
 		
 		back.append("Es rücken aus: ");
