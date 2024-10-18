@@ -12,7 +12,7 @@ public class AlarmHandler {
 	
 	
 	public void alarmReceived(AlarmObject ao) {
-		final AlarmWindow window = new AlarmWindow(ao.toDisplayString(), ao.getKeyword(), 10);
+		final AlarmWindow window = new AlarmWindow(ao, 10);
 		window.setVisible(true);
 		
 		new Thread() {

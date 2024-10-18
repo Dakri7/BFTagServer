@@ -6,6 +6,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Toolkit;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,7 +17,7 @@ import javax.swing.JTextArea;
 
 public class AlarmWindow extends JFrame {
 	
-	public AlarmWindow(String alarmInfo, String shortKeyword, int minimalTextSize) {
+	public AlarmWindow(AlarmObject ao, int minimalTextSize) {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		setSize(screenSize);
 		setExtendedState(Frame.MAXIMIZED_BOTH);
@@ -24,8 +26,8 @@ public class AlarmWindow extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 		JLabel alarmLabel = new JLabel("EINSATZ:");
-		JTextArea informationArea = new JTextArea(alarmInfo);
-		JLabel shortKeywordLabel = new JLabel(shortKeyword);
+		JTextArea informationArea = new JTextArea(ao.toDisplayString());
+		JLabel shortKeywordLabel = new JLabel(ao.getShortKeyword());
 
 		JPanel northPanel = new JPanel(new BorderLayout());
 		northPanel.setBackground(new Color(0xbb1e10));
@@ -34,12 +36,12 @@ public class AlarmWindow extends JFrame {
 
 		Font northFont = new Font("Arial", 0, screenSize.height / 12);
 		informationArea.setEditable(false);
-		fitFontToScreenSize(informationArea, screenSize.width, screenSize.height, minimalTextSize);
 		alarmLabel.setFont(northFont);
 		shortKeywordLabel.setFont(northFont);
 
 		northPanel.add(alarmLabel, BorderLayout.WEST);
 		northPanel.add(shortKeywordLabel, BorderLayout.EAST);
+		fitFontToScreenSize(informationArea, screenSize.width, screenSize.height - northPanel.getPreferredSize().height, minimalTextSize);
 		getContentPane().add(northPanel, BorderLayout.NORTH);
 		getContentPane().add(informationArea, BorderLayout.CENTER);
 	}
@@ -48,7 +50,7 @@ public class AlarmWindow extends JFrame {
 		int size = 200;
 		Font f = new Font("Arial", 0, size); 
 		area.setFont(f);
-		while(area.getPreferredSize().width > maxWidth && size >= minTextSize) {
+		while((area.getPreferredSize().width > maxWidth || area.getPreferredSize().height > maxHeight) && size >= minTextSize) {
 			size -= 10;
 			area.setFont(f.deriveFont((float)size));
 		}
@@ -58,5 +60,20 @@ public class AlarmWindow extends JFrame {
 			area.setLineWrap(true);
 			area.setWrapStyleWord(true);
 		}
+	}
+	
+	public static void main(String[] args) {
+		AlarmObject ao = new AlarmObject();
+		ao.setKeyword("B2.4 Fahrzeugbrand");
+		ao.setConcreteKeyword("LKW-Brand");
+		ao.setCategory("Brand");
+		ao.setStreet("Lion-Feuchtwanger-Str. 135");
+		Map<String, String> vehiclesWithGroups = new HashMap<>();
+		vehiclesWithGroups.put("HLF", "Gruppe 1");
+		vehiclesWithGroups.put("LF KatS", "Gruppe 2");
+		vehiclesWithGroups.put("Pool LF", "Gruppe 3");
+		ao.setVehiclesWithGroups(vehiclesWithGroups);
+		AlarmWindow aw = new AlarmWindow(ao, 10);
+		aw.setVisible(true);
 	}
 }

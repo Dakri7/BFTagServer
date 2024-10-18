@@ -2,6 +2,8 @@ package de.ff_hechtsheim.bftag.server;
 
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.springframework.stereotype.Repository;
 
@@ -79,16 +81,39 @@ public class AlarmObject {
 	public void setAdditionalInfo(String additionalInfo) {
 		this.additionalInfo = additionalInfo;
 	}
+	
+	public String getShortKeyword() {
+		Pattern pattern = Pattern.compile("(^[BHWSUG]\\d+\\.\\d+)");
+		Matcher matcher = pattern.matcher(keyword);
+		if (matcher.find()){
+		    return matcher.group(1);
+		} else {
+			return "";
+		}
+	}
 
 	public String toDisplayString() {
 		StringBuilder back = new StringBuilder();
 		
-		back.append(keyword).append("\n");
-		back.append(street).append("\n");
+		if (concreteKeyword != null && !"".equals(concreteKeyword)) {
+			back.append(getShortKeyword()).append(" ").append(concreteKeyword).append("\n");
+		} else {
+			back.append(keyword).append("\n");
+		}
+		back.append(street);
+		if (houseNumber != null && !"".equals(houseNumber)) {
+			back.append(houseNumber).append("\n");
+		}
+		back.append("\n");
+		if (additionalInfo != null && !"".equals(additionalInfo)) {
+			back.append(additionalInfo).append("\n");
+		}
+		
 		
 		for(Entry<String, String> e: vehiclesWithGroups.entrySet()) {
 			back.append(e.getValue()).append(": ").append(e.getKey()).append("\n");
 		}
+		
 		
 		return back.toString();
 	}
@@ -99,6 +124,7 @@ public class AlarmObject {
 		back.append("Einsatzalarm! ");
 		back.append(keyword).append(". ");
 		back.append(street).append(". ");
+		back.append(additionalInfo).append(". ");
 		
 		back.append("Es rücken aus: ");
 		for(Entry<String, String> e: vehiclesWithGroups.entrySet()) {
@@ -109,5 +135,7 @@ public class AlarmObject {
 		
 		return back.toString();
 	}
+
+	
 
 }
