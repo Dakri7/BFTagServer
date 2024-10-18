@@ -3,6 +3,7 @@ package de.ff_hechtsheim.bftag.server;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +19,7 @@ public class AlarmTTS {
 		pb.redirectError(ProcessBuilder.Redirect.INHERIT);
 		try {
 			Process p = pb.start();
-			writer = new BufferedWriter(new OutputStreamWriter(p.getOutputStream()));
+			writer = new BufferedWriter(new OutputStreamWriter(p.getOutputStream(), StandardCharsets.UTF_8));
 		} catch (IOException e) {
 			logger.error("Creation of TTS Process failed: " + e.getMessage());
 		}

@@ -64,10 +64,11 @@ public class AlarmWindow extends JFrame {
 	
 	public static void main(String[] args) {
 		AlarmObject ao = new AlarmObject();
-		ao.setKeyword("B2.4 Fahrzeugbrand");
+		ao.setKeyword("B2.4 Müllbrand");
 		ao.setConcreteKeyword("LKW-Brand");
 		ao.setCategory("Brand");
-		ao.setStreet("Lion-Feuchtwanger-Str. 135");
+		ao.setStreet("Lion-Feuchtwanger-Straße 135");
+		ao.setAdditionalInfo("Test");
 		Map<String, String> vehiclesWithGroups = new HashMap<>();
 		vehiclesWithGroups.put("HLF", "Gruppe 1");
 		vehiclesWithGroups.put("LF KatS", "Gruppe 2");
@@ -75,5 +76,7 @@ public class AlarmWindow extends JFrame {
 		ao.setVehiclesWithGroups(vehiclesWithGroups);
 		AlarmWindow aw = new AlarmWindow(ao, 10);
 		aw.setVisible(true);
+		AlarmTTS tts = new AlarmTTS();
+		tts.alarm(ao);
 	}
 }

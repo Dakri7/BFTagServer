@@ -122,7 +122,11 @@ public class AlarmObject {
 		StringBuilder back = new StringBuilder();
 		
 		back.append("Einsatzalarm! ");
-		back.append(keyword).append(". ");
+		if (concreteKeyword != null && !"".equals(concreteKeyword)) {
+			back.append(getShortKeyword()).append(" ").append(concreteKeyword).append(". ");
+		} else {
+			back.append(keyword).append(". ");
+		}
 		back.append(street).append(". ");
 		back.append(additionalInfo).append(". ");
 		
@@ -135,7 +139,4 @@ public class AlarmObject {
 		
 		return back.toString();
 	}
-
-	
-
 }
