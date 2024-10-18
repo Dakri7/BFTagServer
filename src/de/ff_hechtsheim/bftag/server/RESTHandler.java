@@ -51,7 +51,7 @@ public class RESTHandler {
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/vehicles")
 	public String[] getVehicleList() {
-		return new String[]{"LF 8/12", "LF 20/16"};
+		return new String[]{"16/49", "16/48", "15/44"};
 	}
 	
 	@CrossOrigin(origins = "http://localhost:4200")
