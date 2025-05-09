@@ -21,9 +21,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 public class RESTHandler {
-
+	
+	private ServerProperties properties;
+	
 	Logger logger = LoggerFactory.getLogger(RESTHandler.class);
 	StatusTracker tracker = new StatusTracker();
+	
+	public RESTHandler(ServerProperties props) {
+		this.properties = props;
+	}
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/alarm")
@@ -51,13 +57,13 @@ public class RESTHandler {
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/vehicles")
 	public String[] getVehicleList() {
-		return new String[]{"LF 20/16", "LF KatS", "LF 8/12", "MW"};
+		return properties.getVehicles().toArray(new String[properties.getVehicles().size()]);
 	}
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/groups")
 	public String[] getGroups() {
-		return new String[]{"Gruppe 1", "Gruppe 2", "Gruppe 3"};
+		return properties.getGroups().toArray(new String[properties.getGroups().size()]);
 	}
 	
 	@CrossOrigin(origins = "http://localhost:4200")
