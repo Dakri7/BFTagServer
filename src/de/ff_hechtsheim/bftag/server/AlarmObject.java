@@ -137,7 +137,9 @@ public class AlarmObject {
 		
 		back.append("Es rücken aus: ");
 		for(Entry<String, String> e: vehiclesWithGroups.entrySet()) {
-			back.append(e.getValue()).append(" mit dem ").append(e.getKey()).append(", ");
+			if(e.getValue() != null && e.getValue() != "null") {
+				back.append(e.getValue()).append(" mit dem ").append(e.getKey()).append(", ");
+			}
 		}
 		
 		back.append("Ende der Durchsage");
