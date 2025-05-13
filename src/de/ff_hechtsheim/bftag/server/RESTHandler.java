@@ -77,7 +77,7 @@ public class RESTHandler {
 	public String[] getAAO(@RequestParam String category) throws IOException{
 		return ResourceManager.getAAO(category);
 	}
-	
+	/*
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/alarms")
 	public @ResponseBody Map<String, AlarmObject> getAlarms(){
@@ -95,7 +95,7 @@ public class RESTHandler {
 	public void deleteAlarm(@RequestParam String name){
 		AlarmSerializationHandler.deleteAlarm(name);
 	}
-	
+	*/
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/announcement")
 	public void triggerAnnouncement(@RequestBody String text){

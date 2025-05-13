@@ -17,6 +17,9 @@ public class ResourceManager {
 	}
 	
 	public static String[] getAAO(String category) throws IOException {
+		if(!category.matches("[a-zA-Z]*")) {
+			throw new IllegalArgumentException("Category may only contain letters: " + category);
+		}
 		String allFiles = Files.readString(Path.of(aaoFolder+category+".txt"), StandardCharsets.UTF_8);
 		return allFiles.split("\r?\n");
 	}
