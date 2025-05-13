@@ -111,7 +111,9 @@ public class AlarmObject {
 		
 		
 		for(Entry<String, String> e: vehiclesWithGroups.entrySet()) {
-			back.append(e.getValue()).append(": ").append(e.getKey()).append("\n");
+			if(e.getValue() != null && e.getValue() != "null") {
+				back.append(e.getValue()).append(": ").append(e.getKey()).append("\n");
+			}
 		}
 		
 		
