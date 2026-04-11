@@ -13,6 +13,7 @@ S1.12 Schwerlasttransport
 S1.13 angemeldetes Feuer
 S1.14 Testeinsatz
 S1.15 Hubschrauberlandung
+S1.16 Einsatzverpflegung
 S2.1 Grundstufe
 S2.2 Flugzeugunfall klein
 S2.3 Unwetter
