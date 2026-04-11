@@ -73,6 +73,12 @@ public class RESTHandler {
 	}
 	
 	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping("/categories")
+	public String[] getAAOCategoriesList() throws IOException {
+		return ResourceManager.getAAOCategories();
+	}
+	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/aao")
 	public String[] getAAO(@RequestParam String category) throws IOException{
 		return ResourceManager.getAAO(category);
