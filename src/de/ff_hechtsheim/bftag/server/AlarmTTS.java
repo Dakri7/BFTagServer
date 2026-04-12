@@ -41,6 +41,7 @@ public class AlarmTTS {
 	public void announcement(String text) {
 		gong();
 		try {
+			writer.write("Durchsage! ");
 			writer.write(text);
 			writer.newLine();
 			writer.flush();
