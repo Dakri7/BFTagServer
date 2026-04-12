@@ -83,7 +83,7 @@ public class AlarmObject {
 	}
 	
 	public String getShortKeyword() {
-		Pattern pattern = Pattern.compile("(^[BHWSUG]\\d+\\.\\d+)");
+		Pattern pattern = Pattern.compile("((^[A-Z]\\d+\\.\\d+)|([A-Z]\\d))");
 		Matcher matcher = pattern.matcher(keyword);
 		if (matcher.find()){
 		    return matcher.group(1);
