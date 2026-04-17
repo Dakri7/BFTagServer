@@ -1,2 +1,4 @@
-R1.1 Grundstufe
-R1.2 Hochwasser
+R0 RTW ohne Sondersignal
+R1 RTW mit Sondersignal
+R2.1 RTW mit Notarzt
+R2.2 Massenanfall mit Verletzten
